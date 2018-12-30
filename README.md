@@ -1,11 +1,11 @@
-# Dockerfile on Ubuntu prepared for Harbour Project xBase compiler project.
+# Dockerfile for Harbour Project xBase compiler project.
 
 Ubuntu prepared for Harbour Project compilation
 
 ## Docker Hub
 
 ```
-docker pull elmarit/ubuntu-harbour
+docker pull elmarit/ubuntu-harbour:latest
 ```
 
 ## Harbour Core project (3.2)
