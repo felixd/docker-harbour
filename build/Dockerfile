@@ -65,3 +65,5 @@ ENV HB_WITH_CURL=/usr/include/x86_64-linux-gnu/
 # Harbour Build config
 ENV HB_BUILD_DYN=yes
 ENV HB_BUILD_CONTRIB_DYN=yes
+ENV HB_PLATFORM=linux
+ENV HB_COMPILER=clang
