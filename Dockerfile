@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     debhelper \
     valgrind \
     libncurses-dev \
+    librabbitmq-dev \
     libgpm-dev \
     libcurl4-openssl-dev \
     libmysqlclient-dev \
