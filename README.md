@@ -10,7 +10,7 @@ docker pull elmarit/ubuntu-harbour:latest
 
 ## Harbour Core project (3.2)
 
-https://github.com/vszakats/harbour-core
+https://github.com/harbour/core
 
 ## Harbour Viktor Szakats fork (3.4.0dev)
 
