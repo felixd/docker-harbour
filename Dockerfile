@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
     libmagic-dev \
     unixodbc-dev \
     libpq-dev \
-    qtbase5-dev \
+    libqt4-dev \
 # Optional, to override locally hosted sources:
     libbz2-dev \
     zlib1g-dev \
@@ -49,12 +49,12 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     update-alternatives --config clang && \
     update-alternatives --config clang++
 
+# Clang Include PATH
+ENV CPATH=$CPATH:/usr/local/include:/usr/include/:/usr/include/x86_64-linux-gnu/
+
 # Packages for Harbour builds
 
 # OCILIB - C and C++ Drivers for Oracle
 # https://github.com/vrogier/ocilib
 RUN git clone --depth=1 https://github.com/vrogier/ocilib /hblibs/ocilib
 ENV HB_WITH_OCILIB=/hblibs/ocilib/include/
-
-# curl/curl.h
-# ENV HB_WITH_CURL=/usr/include/x86_64-linux-gnu/
