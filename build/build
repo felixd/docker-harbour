@@ -1,4 +1,0 @@
-#!/bin/bash
-
-docker build -t elmarit/harbour:build .
-docker push elmarit/harbour:build
