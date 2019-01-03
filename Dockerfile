@@ -3,7 +3,6 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
     bash \
     git \
-    gcc \
     wget \
     make \
     apt-utils \
@@ -50,8 +49,12 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     update-alternatives --config clang && \
     update-alternatives --config clang++
 
-# OpenSSL
-# ENV HB_WITH_OPENSSL=yes
-# Other options 
-# ENV HB_BUILD_DYN=yes
-# ENV HB_BUILD_CONTRIB_DYN=yes
+# Packages for Harbour builds
+
+# OCILIB - C and C++ Drivers for Oracle
+# https://github.com/vrogier/ocilib
+RUN git clone --depth=1 https://github.com/vrogier/ocilib /hblibs/ocilib
+ENV HB_WITH_OCILIB=/hblibs/ocilib/include/
+
+# curl/curl.h
+# ENV HB_WITH_CURL=/usr/include/x86_64-linux-gnu/
