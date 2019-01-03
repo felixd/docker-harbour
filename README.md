@@ -5,7 +5,7 @@ Ubuntu prepared for Harbour Project compilation
 ## Docker Hub
 
 ```
-docker pull elmarit/ubuntu-harbour:latest
+docker pull elmarit/harbour:latest
 ```
 
 ## Harbour Core project (3.2)

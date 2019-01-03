@@ -58,3 +58,10 @@ ENV CPATH=$CPATH:/usr/local/include:/usr/include/:/usr/include/x86_64-linux-gnu/
 # https://github.com/vrogier/ocilib
 RUN git clone --depth=1 https://github.com/vrogier/ocilib /hblibs/ocilib
 ENV HB_WITH_OCILIB=/hblibs/ocilib/include/
+
+# CURL
+ENV HB_WITH_CURL=/usr/include/x86_64-linux-gnu/
+
+# Harbour Build config
+ENV HB_BUILD_DYN=yes
+ENV HB_BUILD_CONTRIB_DYN=yes
