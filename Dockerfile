@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     gcc \
     wget \
     make \
+    apt-utils \
     binutils \
     fakeroot \
     debhelper \
@@ -48,6 +49,8 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     update-alternatives --config clang && \
     update-alternatives --config clang++
 
-ENV HB_WITH_OPENSSL=yes
-ENV HB_BUILD_DYN=yes
-ENV HB_BUILD_CONTRIB_DYN=yes
+# OpenSSL
+# ENV HB_WITH_OPENSSL=yes
+# Other options 
+# ENV HB_BUILD_DYN=yes
+# ENV HB_BUILD_CONTRIB_DYN=yes
