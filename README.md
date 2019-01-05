@@ -4,12 +4,26 @@ Ubuntu prepared for Harbour Project compilation
 
 ## Docker Hub
 
-### Build Environment Container
+### Build Environment Containers
 
-Below you can get Build Environment based on Ubuntu container
+Below you can get Build Environment based on Ubuntu
+
+* **build_base**: Base environment configuration. Required packages are installed. No compiller is installed
 
 ```
-docker pull elmarit/harbour:build
+docker pull elmarit/harbour:build_base
+```
+
+* **build_clang6**: **build_base** + clang6 build environment
+
+```
+docker pull elmarit/harbour:build_clang6
+```
+
+* **build_clang7**: **build_base** + clang7 build environment
+
+```
+docker pull elmarit/harbour:build_clang7
 ```
 
 Using `harbour:build` two containers are created
@@ -33,4 +47,6 @@ docker pull elmarit/harbour:hb34
 
 ![Harbour Project Logo](https://harbour.github.io/images/harbour.svg "Harbour Project Logo")
 
+## Authors
 
+* Paweł 'felixd' Wojciechowski : [Outsourcing IT - Konopnickiej.Com](https://konopnickiej.com)
