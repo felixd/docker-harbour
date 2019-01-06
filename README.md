@@ -1,6 +1,7 @@
-# Dockerfile for Harbour Project xBase compiler project.
+# Harbour Project xBase compiler on Docker
 
-Ubuntu prepared for Harbour Project compilation
+* Git: https://github.com/felixd/docker-harbour
+* Docker: https://hub.docker.com/r/elmarit/harbour
 
 ## Docker Hub
 
@@ -43,6 +44,18 @@ https://github.com/vszakats/harbour-core
 
 ```
 docker pull elmarit/harbour:hb34
+```
+
+## Advantage Client Engine - Advantage Database Server (ADS) header files
+
+Header files can be found under below link. 
+
+http://devzone.advantagedatabase.com/dz/content.aspx?Key=20&Release=19&Product=5
+
+Download client, install it and point to header files using **HB_WITH_ADS**. Then recompile **contrib/** folder
+
+```
+export HB_WITH_ADS=/path/to/ace.h
 ```
 
 ![Harbour Project Logo](https://harbour.github.io/images/harbour.svg "Harbour Project Logo")

@@ -28,6 +28,7 @@ RUN apt-get install -y \
     unixodbc-dev \
     libpq-dev \
     libqt4-dev \
+    libicu-dev \
 # Optional, to override locally hosted sources:
     libbz2-dev \
     zlib1g-dev \
