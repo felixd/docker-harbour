@@ -5,40 +5,65 @@
 
 ## Docker Hub
 
-### Build Environment Containers
+### Containers
 
-Below you can get Build Environment based on Ubuntu
+All containers are build on top of `ubuntu:latest`. Other layers are created as shown below:
 
-* **build_base**: Base environment configuration. Required packages are installed. No compiller is installed
+```
++-------------------------------+
+|         ubuntu:latest         |
++-------------------------------+
+|           build_base          |   # packages / libraries / ENV
++-------------------------------+
+| clang6 | clang7 |   other...  |   # C/C++ compilers
++-------------------------------+
+|  Harbour 3.2  |  Harbour 3.4  |   # Harbour Project
++-------------------------------+
+```
+
+### Base
+
+#### :build_base
+
+* **[build_base/Dockerfile](build_base/Dockerfile)**: 
+
+Packages and libraries required by Harbour Project to be properly compiled are installed and set. No C/C++ compilers are installed in this layer.
 
 ```
 docker pull elmarit/harbour:build_base
 ```
 
-* **build_clang6**: **build_base** + clang6 build environment
+### C/C++ compilers
+
+#### :build_clang6
+
+**[build_clang6/Dockerfile](build_clang6/Dockerfile)**
 
 ```
-docker pull elmarit/harbour:build_clang6
+docker pull elmarit/harbour:build_clang6  
 ```
 
-* **build_clang7**: **build_base** + clang7 build environment
+#### :build_clang7 (default :build)
+
+**[build_clang7/Dockerfile](build_clang7/Dockerfile)**
 
 ```
 docker pull elmarit/harbour:build_clang7
 ```
 
-Using `harbour:build` two containers are created
+### Harbour Project
 
-### Harbour Core project (3.2)
+Using `harbour:build` (default build container) Harbour Projects are compiled.
+
+#### Harbour Core project (3.2)
 
 https://github.com/harbour/core
-
 
 ```
 docker pull elmarit/harbour:hb32
 ```
 
-### Harbour Viktor Szakats fork (3.4.0dev)
+#### Harbour Viktor Szakats fork (3.4.0dev)
 
 https://github.com/vszakats/harbour-core
 
