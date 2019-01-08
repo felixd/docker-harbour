@@ -10,7 +10,7 @@ before_script:
   - docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_PASSWORD"
 
 build-master:
-  stage: dockerfiles
+  stage: build
   script:
     - ./docker_build.sh
   only:
