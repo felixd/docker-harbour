@@ -13,6 +13,6 @@ build-master:
   stage: build
   script:
     - pwd
-    - bash docker_build.sh
+    - sh docker_build.sh
   only:
     - master
