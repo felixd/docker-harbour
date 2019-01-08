@@ -12,6 +12,7 @@ before_script:
 build-master:
   stage: build
   script:
-    - docker_build.sh
+    - pwd
+    - /docker_build.sh
   only:
     - master
