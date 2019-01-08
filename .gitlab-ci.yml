@@ -1,0 +1,17 @@
+# Official docker image.
+image: docker:latest
+
+# Docker in Docker
+services:
+  - docker:dind
+
+# GitLab Project Settings -> CI/CD -> Variables
+before_script:
+  - docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_PASSWORD"
+
+build-master:
+  stage: dockerfiles
+  script:
+    - ./docker_build.sh
+  only:
+    - master
