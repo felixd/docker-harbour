@@ -21,7 +21,7 @@ All containers are build on top of `ubuntu:latest`. Other layers are created as 
 +-------------------------------+
 ```
 
-### Base
+### Build Base
 
 #### :build_base
 
@@ -35,32 +35,30 @@ docker pull elmarit/harbour:build_base
 
 ### C/C++ compilers
 
-#### :build_clang6
+#### :compiler_clang6
 
-**[build_clang6/Dockerfile](build_clang6/Dockerfile)**
-
-```
-docker pull elmarit/harbour:build_clang6  
-```
-
-#### :build_clang7 (default :build)
-
-**[build_clang7/Dockerfile](build_clang7/Dockerfile)**
+**[compiler_clang6/Dockerfile](compiler_clang6/Dockerfile)**
 
 ```
-docker pull elmarit/harbour:build_clang7
+docker pull elmarit/harbour:compiler_clang6  
+```
+
+#### :compiler_clang7 (default :build)
+
+**[compiler_clang7/Dockerfile](compiler_clang7/Dockerfile)**
+
+```
+docker pull elmarit/harbour:compiler_clang7
 ```
 
 ### Harbour Project
-
-Using `harbour:build` (default build container) Harbour Projects are compiled.
 
 #### Harbour Core project (3.2)
 
 https://github.com/harbour/core
 
 ```
-docker pull elmarit/harbour:hb32
+docker pull elmarit/harbour:3.2
 ```
 
 #### Harbour Viktor Szakats fork (3.4.0dev)
@@ -68,7 +66,11 @@ docker pull elmarit/harbour:hb32
 https://github.com/vszakats/harbour-core
 
 ```
-docker pull elmarit/harbour:hb34
+docker pull elmarit/harbour:3
+docker pull elmarit/harbour:3.4
+docker pull elmarit/harbour:3.4.0
+docker pull elmarit/harbour:3.4.0.dev
+docker pull elmarit/harbour:latest
 ```
 
 ## Advantage Client Engine - Advantage Database Server (ADS) header files
