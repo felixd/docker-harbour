@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # © 2019 Konopnickiej.Com - Paweł 'felixd' Wojciechowski
 
