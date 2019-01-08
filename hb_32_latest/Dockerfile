@@ -1,4 +1,4 @@
-FROM elmarit/harbour:build as build
+FROM elmarit/harbour:compiler_default as build
 ENV HB_PLATFORM=linux
 ENV HB_COMPILER=clang
 

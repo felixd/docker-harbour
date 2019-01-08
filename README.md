@@ -23,14 +23,15 @@ All containers are build on top of `ubuntu:latest`. Other layers are created as 
 
 ### Build Base
 
-#### :build_base
+#### :build_base / :build_ubuntu_latest
 
-* **[build_base/Dockerfile](build_base/Dockerfile)**: 
+* **[build_ubuntu_latest/Dockerfile](build_ubuntu_latest/Dockerfile)**: 
 
 Packages and libraries required by Harbour Project to be properly compiled are installed and set. No C/C++ compilers are installed in this layer.
 
 ```
 docker pull elmarit/harbour:build_base
+docker pull elmarit/harbour:build_ubuntu_latest
 ```
 
 ### C/C++ compilers
@@ -40,15 +41,16 @@ docker pull elmarit/harbour:build_base
 **[compiler_clang6/Dockerfile](compiler_clang6/Dockerfile)**
 
 ```
-docker pull elmarit/harbour:compiler_clang6  
+docker pull elmarit/harbour:compiler_clang6
 ```
 
-#### :compiler_clang7 (default :build)
+#### :compiler_clang7
 
 **[compiler_clang7/Dockerfile](compiler_clang7/Dockerfile)**
 
 ```
 docker pull elmarit/harbour:compiler_clang7
+docker pull elmarit/harbour:compiler_default
 ```
 
 ### Harbour Project

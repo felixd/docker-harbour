@@ -4,7 +4,8 @@
 
 # This tag will be used as default build env elmarit/harbour:build
 REPO="elmarit/harbour"
-TAG_DEFAULT_BUILD_ENV="compiler_clang7"
+TAG_DEFAULT_BUILD_ENV="build_ubuntu_latest"
+TAG_DEFAULT_COMPILER="compiler_clang7"
 TAG_LATEST="hb_34_latest"
 
 BUILD_ENVS=()
@@ -31,20 +32,25 @@ echo " *** Compilers: ${COMPILERS[@]}"
 echo " *** Harbours: ${HARBOURS[@]}"
 echo "+-------------------------------------------------------------------+"
 
+# BUILD ENVIRONMENTS
 for TAG in ${BUILD_ENVS[@]}; do
  docker build -t $REPO:$TAG $TAG/
 done
 
+docker tag $REPO:$TAG_DEFAULT_BUILD_ENV $REPO:build_base
+
+# COMPILERS
 for TAG in ${COMPILERS[@]}; do
  docker build -t $REPO:$TAG $TAG/
 done
 
+docker tag $REPO:$TAG_DEFAULT_COMPILER $REPO:compiler_default
+
+# HARBOURS
 for TAG in ${HARBOURS[@]}; do
  docker build -t $REPO:$TAG $TAG/
 done
 
-# Setting TAGs
-docker tag $REPO:$TAG_DEFAULT_BUILD_ENV $REPO:build
 docker tag $REPO:$TAG_LATEST $REPO:latest
 
 docker tag $REPO:hb_34_latest $REPO:3
