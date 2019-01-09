@@ -37,7 +37,8 @@ for TAG in ${BUILD_ENVS[@]}; do
  echo "+-------------------------------------------------------------------+"
  echo " *** Building TAG: :$TAG *** "
  echo "+-------------------------------------------------------------------+"
- docker build --pull -t $REPO:$TAG $TAG/
+ docker pull $REPO:$TAG || true # In case image does not exist
+ docker build --cache-from $REPO:$TAG --pull -t $REPO:$TAG $TAG/
 done
 
 docker tag $REPO:$TAG_DEFAULT_BUILD_ENV $REPO:build_base
@@ -47,17 +48,19 @@ for TAG in ${COMPILERS[@]}; do
  echo "+-------------------------------------------------------------------+"
  echo " *** Building TAG: :$TAG *** "
  echo "+-------------------------------------------------------------------+"
- docker build --pull -t $REPO:$TAG $TAG/
+ docker pull $REPO:$TAG || true # In case image does not exist
+ docker build --cache-from $REPO:$TAG  --pull -t $REPO:$TAG $TAG/
 done
 
 docker tag $REPO:$TAG_DEFAULT_COMPILER $REPO:compiler_default
 
 # HARBOURS
+# Those Dockerfiles have to be rebuilt everytime. We do not know if remote Git repo has changed or not.
 for TAG in ${HARBOURS[@]}; do
  echo "+-------------------------------------------------------------------+"
  echo " *** Building TAG: :$TAG *** "
  echo "+-------------------------------------------------------------------+"
- docker build --pull -t $REPO:$TAG $TAG/
+ docker build -t $REPO:$TAG $TAG/
 done
 
 docker tag $REPO:$TAG_LATEST $REPO:latest
