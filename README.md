@@ -3,6 +3,8 @@
 * Git: https://github.com/felixd/docker-harbour
 * Docker: https://hub.docker.com/r/elmarit/harbour
 
+[![pipeline status](https://gitlab.com/felixd/docker-harbour/badges/master/pipeline.svg)](https://gitlab.com/felixd/docker-harbour/commits/master)
+
 ## Docker Hub
 
 ### Containers
