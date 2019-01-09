@@ -7,4 +7,4 @@ ENV HB_COMPILER=clang
 # Harbour Projecet - Core 3.2 version
 RUN git clone --depth=1 https://github.com/harbour/core.git $HB_SRC_ROOTPATH
 # Number of concurent jobs during make set to 8
-RUN cd $HB_SRC_ROOTPATH && time make -j 8 install
+RUN cd $HB_SRC_ROOTPATH && make -j 8 install
