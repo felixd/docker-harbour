@@ -25,7 +25,7 @@ done
 echo "+-------------------------------------------------------------------+"
 docker version
 echo "+-------------------------------------------------------------------+"
-echo " *** Building Dockerfiles of: $REPO *** "
+echo " *** Building Dockerfiles from repository: $REPO *** "
 echo "+-------------------------------------------------------------------+"
 echo " *** Build Environments: ${BUILD_ENVS[@]}"
 echo " *** Compilers: ${COMPILERS[@]}"
@@ -34,21 +34,30 @@ echo "+-------------------------------------------------------------------+"
 
 # BUILD ENVIRONMENTS
 for TAG in ${BUILD_ENVS[@]}; do
- docker build -t $REPO:$TAG $TAG/
+ echo "+-------------------------------------------------------------------+"
+ echo " *** Building TAG: :$TAG *** "
+ echo "+-------------------------------------------------------------------+"
+ docker build --pull -t $REPO:$TAG $TAG/
 done
 
 docker tag $REPO:$TAG_DEFAULT_BUILD_ENV $REPO:build_base
 
 # COMPILERS
 for TAG in ${COMPILERS[@]}; do
- docker build -t $REPO:$TAG $TAG/
+ echo "+-------------------------------------------------------------------+"
+ echo " *** Building TAG: :$TAG *** "
+ echo "+-------------------------------------------------------------------+"
+ docker build --pull -t $REPO:$TAG $TAG/
 done
 
 docker tag $REPO:$TAG_DEFAULT_COMPILER $REPO:compiler_default
 
 # HARBOURS
 for TAG in ${HARBOURS[@]}; do
- docker build -t $REPO:$TAG $TAG/
+ echo "+-------------------------------------------------------------------+"
+ echo " *** Building TAG: :$TAG *** "
+ echo "+-------------------------------------------------------------------+"
+ docker build --pull -t $REPO:$TAG $TAG/
 done
 
 docker tag $REPO:$TAG_LATEST $REPO:latest

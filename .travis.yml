@@ -1,3 +1,5 @@
+os: linux
+lang: c
 services:
   - docker
 

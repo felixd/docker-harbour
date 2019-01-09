@@ -1,9 +1,9 @@
 # Harbour Project xBase compiler on Docker
 
-* Git: https://github.com/felixd/docker-harbour
+* Github: https://github.com/felixd/docker-harbour
 * Docker: https://hub.docker.com/r/elmarit/harbour
 
-[![pipeline status](https://gitlab.com/felixd/docker-harbour/badges/master/pipeline.svg)](https://gitlab.com/felixd/docker-harbour/commits/master)
+Gitlab: [![pipeline status](https://gitlab.com/felixd/docker-harbour/badges/master/pipeline.svg)](https://gitlab.com/felixd/docker-harbour/commits/master) Github: [![Build Status](https://travis-ci.org/felixd/docker-harbour.svg?branch=master)](https://travis-ci.org/felixd/docker-harbour)
 
 ## Docker Hub
 
@@ -12,15 +12,15 @@
 All containers are build on top of `ubuntu:latest`. Other layers are created as shown below:
 
 ```
-+-------------------------------+
-|         ubuntu:latest         |
-+-------------------------------+
-|           build_base          |   # packages / libraries / ENV
-+-------------------------------+
-| clang6 | clang7 |   other...  |   # C/C++ compilers
-+-------------------------------+
-|  Harbour 3.2  |  Harbour 3.4  |   # Harbour Project
-+-------------------------------+
++----------------+
+| ubuntu:latest  |
++----------------+
+| build_*        |   # packages / libraries / ENV
++----------------+
+| compiler_*     |   # C/C++ compilers
++----------------+
+| hb_*           |   # Harbour Project versions
++----------------+
 ```
 
 ### Build Base
