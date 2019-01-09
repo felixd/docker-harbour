@@ -65,14 +65,6 @@ docker pull elmarit/harbour:compiler_clang7
 docker pull elmarit/harbour:compiler_default
 ```
 
-#### :compiler_gcc
-
-**[compiler_gcc/Dockerfile](compiler_gcc/Dockerfile)**
-
-```
-docker pull elmarit/harbour:compiler_gcc
-```
-
 ### Harbour Project
 
 #### Harbour Core project (3.2)
