@@ -41,6 +41,7 @@ for TAG in ${BUILD_ENVS[@]}; do
  docker build --cache-from $REPO:$TAG --pull -t $REPO:$TAG $TAG/
 done
 
+docker tag $REPO:$TAG_DEFAULT_BUILD_ENV $REPO:build
 docker tag $REPO:$TAG_DEFAULT_BUILD_ENV $REPO:build_base
 
 # COMPILERS
@@ -52,6 +53,7 @@ for TAG in ${COMPILERS[@]}; do
  docker build --cache-from $REPO:$TAG  --pull -t $REPO:$TAG $TAG/
 done
 
+docker tag $REPO:$TAG_DEFAULT_COMPILER $REPO:compiler
 docker tag $REPO:$TAG_DEFAULT_COMPILER $REPO:compiler_default
 
 # HARBOURS

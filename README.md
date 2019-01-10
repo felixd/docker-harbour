@@ -12,43 +12,50 @@
 All images are build on top of `ubuntu:latest`. Other layers are created as shown below:
 
 ```
-+----------------+
-| ubuntu:latest  |   
-+----------------+
-| build_*        |   # Packages / libraries / ENV needed to build Harbour Projects
-+----------------+
-| compiler_*     |   # C/C++ compilers
-+----------------+
-| hb_*           |   # Harbour Project builds
-+----------------+
++----------------------------+
+| ubuntu:latest              |
++----------------------------+
+| elmarit/harbour:build_*    |   # 1. Packages / libraries / ENV variables needed to build Harbour Projects are installed
++----------------------------+
+| elmarit/harbour:compiler_* |   # 2. C/C++ compilers are installed on top of :build_* layer
++----------------------------+
+| elmarit/harbour:hb_*       |   # 3. Harbour Projects are compiled using :compiler_* layer
++----------------------------+
 ```
 
 ### Default tags
 
 ```
- :build_base         =>   :build_ubuntu_latest
- :compiler_default   =>   :compiler_clang7
- :latest             =>   :hb_34_latest
+ elmarit/harbour:build              =>   elmarit/harbour:build_ubuntu_latest
+ elmarit/harbour:build_base         =>   elmarit/harbour:build_ubuntu_latest
+
+ elmarit/harbour:compiler           =>   elmarit/harbour:compiler_clang7
+ elmarit/harbour:compiler_default   =>   elmarit/harbour:compiler_clang7
+
+ elmarit/harbour:latest             =>   elmarit/harbour:hb_34_latest
 ```
 
 ### Build
 
 Image contains packages and libraries required by Harbour Project to be properly compiled. No C/C++ compilers are installed in this layer.
 
-#### :build_base / :build_ubuntu_latest
+#### :build / :build_base / :build_ubuntu_latest
 
 * **[build_ubuntu_latest/Dockerfile](build_ubuntu_latest/Dockerfile)**: 
 
 ```
-docker pull elmarit/harbour:build_base
 docker pull elmarit/harbour:build_ubuntu_latest
+
+
+docker pull elmarit/harbour:build
+docker pull elmarit/harbour:build_base
 ```
 
 ### C/C++ compilers
 
 In this layer C/C++ compiler images are created. They can be used to build any Harbour Project version you need.
 
-#### :compiler_clang6
+#### Clang 6
 
 **[compiler_clang6/Dockerfile](compiler_clang6/Dockerfile)**
 
@@ -56,16 +63,18 @@ In this layer C/C++ compiler images are created. They can be used to build any H
 docker pull elmarit/harbour:compiler_clang6
 ```
 
-#### :compiler_clang7 / :compiler_default
+#### Clang 7
 
 **[compiler_clang7/Dockerfile](compiler_clang7/Dockerfile)**
 
 ```
 docker pull elmarit/harbour:compiler_clang7
+
+docker pull elmarit/harbour:compiler
 docker pull elmarit/harbour:compiler_default
 ```
 
-#### :compiler_clang8
+#### Clang 8
 
 **[compiler_clang8/Dockerfile](compiler_clang8/Dockerfile)**
 
