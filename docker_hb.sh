@@ -2,14 +2,14 @@
 # © 2019 Konopnickiej.Com - Paweł 'felixd' Wojciechowski
 
 REPO="elmarit/harbour"
-TAG_DEFAULT_BUILD_ENV="build_ubuntu_latest"
+TAG_LATEST="hb_34_latest"
 
-BUILD_ENVS=()
+HARBOURS=()
 
 for DIR in *; do
  if [ -d "${DIR}" ]; then
   case "$DIR" in
-   build_*    ) BUILD_ENVS+=($DIR) ;;
+   hb_*       ) HARBOURS+=($DIR)   ;;
   esac
  fi
 done
@@ -17,19 +17,25 @@ done
 echo "+-------------------------------------------------------------------+"
 docker version
 echo "+-------------------------------------------------------------------+"
-echo " *** Building Base Build systems for Harbour Project *** "
+echo " *** Building Harbour Projects *** "
 echo "+-------------------------------------------------------------------+"
-echo " *** Build Environments: ${BUILD_ENVS[@]}"
+echo " *** Harbours: ${HARBOURS[@]}"
 echo "+-------------------------------------------------------------------+"
 
-# BUILD ENVIRONMENTS
-for TAG in ${BUILD_ENVS[@]}; do
+# HARBOURS
+# Those Dockerfiles have to be rebuilt everytime. We do not know if remote Git repo has changed or not.
+for TAG in ${HARBOURS[@]}; do
  echo "+-------------------------------------------------------------------+"
  echo " *** Building TAG: :$TAG *** "
  echo "+-------------------------------------------------------------------+"
- docker pull $REPO:$TAG || true # In case image does not exist
- docker build --cache-from $REPO:$TAG --pull -t $REPO:$TAG $TAG/
+ docker build -t $REPO:$TAG $TAG/
 done
 
-docker tag $REPO:$TAG_DEFAULT_BUILD_ENV $REPO:build
-docker tag $REPO:$TAG_DEFAULT_BUILD_ENV $REPO:build_base
+docker tag $REPO:$TAG_LATEST $REPO:latest
+
+docker tag $REPO:hb_34_latest $REPO:3
+docker tag $REPO:hb_34_latest $REPO:3.4
+docker tag $REPO:hb_34_latest $REPO:3.4.0
+docker tag $REPO:hb_34_latest $REPO:3.4.0dev
+
+docker tag $REPO:hb_32_latest $REPO:3.2

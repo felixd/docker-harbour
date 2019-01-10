@@ -2,14 +2,14 @@
 # © 2019 Konopnickiej.Com - Paweł 'felixd' Wojciechowski
 
 REPO="elmarit/harbour"
-TAG_DEFAULT_BUILD_ENV="build_ubuntu_latest"
+TAG_DEFAULT_COMPILER="compiler_clang7"
 
-BUILD_ENVS=()
+COMPILERS=()
 
 for DIR in *; do
  if [ -d "${DIR}" ]; then
   case "$DIR" in
-   build_*    ) BUILD_ENVS+=($DIR) ;;
+   compiler_* ) COMPILERS+=($DIR)  ;;
   esac
  fi
 done
@@ -17,19 +17,19 @@ done
 echo "+-------------------------------------------------------------------+"
 docker version
 echo "+-------------------------------------------------------------------+"
-echo " *** Building Base Build systems for Harbour Project *** "
+echo " *** Building Compiler images for Harbour Project *** "
 echo "+-------------------------------------------------------------------+"
-echo " *** Build Environments: ${BUILD_ENVS[@]}"
+echo " *** Compilers: ${COMPILERS[@]}"
 echo "+-------------------------------------------------------------------+"
 
-# BUILD ENVIRONMENTS
-for TAG in ${BUILD_ENVS[@]}; do
+# COMPILERS
+for TAG in ${COMPILERS[@]}; do
  echo "+-------------------------------------------------------------------+"
  echo " *** Building TAG: :$TAG *** "
  echo "+-------------------------------------------------------------------+"
  docker pull $REPO:$TAG || true # In case image does not exist
- docker build --cache-from $REPO:$TAG --pull -t $REPO:$TAG $TAG/
+ docker build --cache-from $REPO:$TAG  --pull -t $REPO:$TAG $TAG/
 done
 
-docker tag $REPO:$TAG_DEFAULT_BUILD_ENV $REPO:build
-docker tag $REPO:$TAG_DEFAULT_BUILD_ENV $REPO:build_base
+docker tag $REPO:$TAG_DEFAULT_COMPILER $REPO:compiler
+docker tag $REPO:$TAG_DEFAULT_COMPILER $REPO:compiler_default
