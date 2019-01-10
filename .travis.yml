@@ -24,23 +24,19 @@ jobs:
       name: "Base OS images"
       script: 
         - ./docker_build.sh
-      if: branch = master
-        - docker push elmarit/harbour
+        - if [ "$TRAVIS_BRANCH" = "master" ]; then docker push elmarit/harbour; fi
 
     - stage: compiler
       name: "C/C++ compiler images"
       script: 
         - ./docker_compiler.sh
-      if: branch = master
-        - docker push elmarit/harbour
-
+        - if [ "$TRAVIS_BRANCH" = "master" ]; then docker push elmarit/harbour; fi
     - stage: hb3.2
       name: "Harbour Project 3.2"
       script:
         - docker build -t $REPO:hb_32_latest hb_32_latest/
         - docker tag $REPO:hb_32_latest $REPO:3.2
-      if: branch = master
-        - docker push elmarit/harbour
+        - if [ "$TRAVIS_BRANCH" = "master" ]; then docker push elmarit/harbour; fi
   
     - stage: hb3.4
       name: "Harbour Project 3.4.0 - Viktors"
@@ -51,6 +47,4 @@ jobs:
         - docker tag $REPO:hb_34_latest $REPO:3.4
         - docker tag $REPO:hb_34_latest $REPO:3.4.0
         - docker tag $REPO:hb_34_latest $REPO:3.4.0dev
-      if: branch = master
-      script:
-        - docker push elmarit/harbour
+        - if [ "$TRAVIS_BRANCH" = "master" ]; then docker push elmarit/harbour; fi
