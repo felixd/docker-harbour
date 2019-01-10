@@ -15,8 +15,8 @@ All images are build on top of `ubuntu:latest`. Other layers are created as show
 +----------------------------+
 | ubuntu:latest              |
 +----------------------------+
-| elmarit/harbour:build_*    |   # 1. Packages / libraries / ENV variables needed to build Harbour Projects are installed
-+----------------------------+
+| elmarit/harbour:build_*    |   # 1. Packages / libraries / ENV variables needed to build Harbour Projects
++----------------------------+        are installed
 | elmarit/harbour:compiler_* |   # 2. C/C++ compilers are installed on top of :build_* layer
 +----------------------------+
 | elmarit/harbour:hb_*       |   # 3. Harbour Projects are compiled using :compiler_* layer
