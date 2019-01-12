@@ -22,17 +22,21 @@ jobs:
   include:
     - stage: base
       name: "Base OS images"
+      skip_cleanup: true
       script: 
         - ./docker_build.sh
         - if [ "$TRAVIS_BRANCH" = "master" ]; then docker push elmarit/harbour; fi
 
     - stage: compiler
       name: "C/C++ compiler images"
+      skip_cleanup: true
       script: 
         - ./docker_compiler.sh
         - if [ "$TRAVIS_BRANCH" = "master" ]; then docker push elmarit/harbour; fi
+
     - stage: hb3.2
       name: "Harbour Project 3.2"
+      skip_cleanup: true
       script:
         - docker build -t $REPO:hb_32_latest hb_32_latest/
         - docker tag $REPO:hb_32_latest $REPO:3.2
@@ -40,6 +44,7 @@ jobs:
   
     - stage: hb3.4
       name: "Harbour Project 3.4.0 - Viktors"
+      skip_cleanup: true
       script: 
         - docker build -t $REPO:hb_34_latest hb_34_latest/
         - docker tag $REPO:hb_34_latest $REPO:latest
