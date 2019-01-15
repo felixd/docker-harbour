@@ -7,7 +7,7 @@
 
 ## Harbour
 
-* [Harbour Core (3.2)](https://github.com/harbour/core)
+* [Harbour 3.2 (Core)](https://github.com/harbour/core)
 * [Harbour 3.4 (Viktor Szakats)](https://github.com/vszakats/harbour-core)
 
 ## Examples
