@@ -131,3 +131,7 @@ export HB_WITH_ADS=/path/to/ace.h
 ## Authors
 
 * Paweł 'felixd' Wojciechowski : [Outsourcing IT - Konopnickiej.Com](https://konopnickiej.com)
+
+## Donations & Support
+
+BTC: bc1qe4clvflldgqw5s9y0yn3lm99lz9yf9mn4x3zfe
